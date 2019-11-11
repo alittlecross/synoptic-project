@@ -4,17 +4,39 @@
   "description": "a quiz manager application",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "nyc --reporter=text mocha",
     "migrations": "node db/run.js migrations",
     "seeds": "node db/run.js seeds"
   },
   "author": "alittlecross",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "ejs": "^2.7.1",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "pg": "^7.12.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1",
+    "sinon": "^7.5.0"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "beforeEach",
+      "afterEach",
+      "it"
+    ]
+  },
+  "nyc": {
+    "exclude": [
+      "db/*",
+      "server/services/*",
+      "test/*"
+    ]
   }
 }

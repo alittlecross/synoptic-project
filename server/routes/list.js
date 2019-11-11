@@ -1,5 +1,9 @@
 module.exports = (req, res) => {
-  res.render('list.ejs', {
+  if (req.session.user) {
+    res.render('list.ejs', {
 
-  })
+    })
+  } else {
+    res.redirect('/')
+  }
 }

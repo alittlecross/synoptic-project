@@ -1,4 +1,6 @@
-const DatabaseLogIn = require('../services/log-in')
+const DatabaseLogIn = require('../services/people')
+
+const bcrypt = require('bcrypt')
 
 class LogIn {
   constructor () {
@@ -14,7 +16,7 @@ class LogIn {
     const result = await DatabaseLogIn.authenticate(data.username)
     const row = result.rows[0]
 
-    if (result.rowCount === 1 && data.password === row.password) {
+    if (result.rowCount === 1 && bcrypt.compareSync(data.password, row.password)) {
       output.success = true
       output.user.id = row.id
       output.user.permission = row.permission
