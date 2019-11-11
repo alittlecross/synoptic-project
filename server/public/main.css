@@ -70,3 +70,18 @@ button:hover {
   font-size: 60px;
   color: #ff0066;
 }
+
+a {
+  cursor: pointer;
+  font-size: 60px ;
+  text-decoration: none;
+  color: #eeeeee;
+}
+
+a:hover {
+  color: #777777;
+}
+
+.log-out {
+  float: right;
+} 
