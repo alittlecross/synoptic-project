@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'meatloaf_sketched';
+  src: url('fonts/meatloaf_sketched.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'meatloaf_outline';
+  src: url('fonts/meatloaf_outline.ttf') format('truetype');
+}

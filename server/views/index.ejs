@@ -1,0 +1,19 @@
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Blue Book - Log In</title>
+  <link rel='stylesheet' href='../../main.css'>
+</head>
+
+<h1 class="main-header">Blue Book</h1>
+<h2 class="sub-header">Log In</h2>
+
+<form action="/log-in" method="POST">
+  <input type='text' name='username' placeholder='username' required value="restricted@email.com">
+  <input type='password' name='password' placeholder='Password' required value="password">
+  <button class="submit" type="submit">Submit</button>
+</form>
+
+<% if (flash && flash.message) { %>
+  <div class='flash'><%= flash.message %></div>
+<% } %>
