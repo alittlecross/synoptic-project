@@ -3,7 +3,7 @@ module.exports.dbLogInOne = {
   rows: [
     { id: 1,
       username: 'person@email.com',
-      password: 'password',
+      password: '$2b$10$2mQcfZHsglfEFQQ8lqJnVefPyVvFlciCsVucezl5SXBgYvdhlCppW',
       createdat: '2005-07-01T12:00:00',
       permissionid: 3,
       permission: 'restricted' }

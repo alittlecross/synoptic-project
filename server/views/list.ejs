@@ -1,1 +1,13 @@
-Hello World
+<%- include('_head', { title: 'Blue Book - List' }) %>
+
+<nav>
+  <a class="log-out" href="/log-out">Log Out</a>
+</nav>
+
+<h1 class="main-header">Blue Book</h1>
+
+<% quizes.forEach(quiz => { %>
+
+  <a href="/quiz-<%= quiz.id %>"><%= quiz.name %></a><br>
+
+<% }) %>

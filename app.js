@@ -21,4 +21,8 @@ app.post('/log-in', require('./server/routes/log-in'))
 
 app.get('/list', require('./server/routes/list'))
 
+app.get('/log-out', require('./server/routes/log-out'))
+
+app.get('/quiz-:id', require('./server/routes/quiz'))
+
 app.listen(port)
