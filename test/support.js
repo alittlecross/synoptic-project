@@ -14,3 +14,13 @@ module.exports.dbLogInTwo = {
   rowCount: 0,
   rows: []
 }
+
+module.exports.dbGetAll = {
+  rowCount: 2,
+  rows: [
+    { quizid: 1,
+      name: 'Quiz One' },
+    { quizid: 2,
+      name: 'Quiz Two' }
+  ]
+}
