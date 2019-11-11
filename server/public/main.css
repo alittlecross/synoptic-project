@@ -7,3 +7,66 @@
   font-family: 'meatloaf_outline';
   src: url('fonts/meatloaf_outline.ttf') format('truetype');
 }
+
+body {
+  background-color: #333333;
+  cursor: default;
+  font-family: 'meatloaf_sketched';
+  color: #eeeeee;
+}
+
+.main-header {
+  margin: 0;
+  font-size: 120px;
+  font-weight: 100;
+}
+
+.sub-header {
+  margin: 0;
+  font-size: 80px;
+  font-weight: 100;
+}
+
+form {
+  margin-bottom: 10px;
+}
+
+input[type=text],
+input[type=password] {
+  display: block;
+  outline: none;
+  border: none;
+  width: 100%;
+  background: none;
+  font-size: 60px;
+  font-family: 'meatloaf_sketched';
+  color: #eeeeee;
+}
+
+button {
+  outline: none;
+  border: none;
+  padding: 1px;
+  background: none;
+  cursor: pointer;
+  font-size: 40px;
+  font-family: 'meatloaf_outline';
+  color: #777777;
+}
+
+button:hover {
+  font-family: 'meatloaf_sketched';
+  color: #eeeeee;
+}
+
+.submit {
+  display: block;
+  font-size: 60px;
+  font-family: 'meatloaf_sketched';
+}
+
+.flash {
+  margin-top: 10px;
+  font-size: 60px;
+  color: #ff0066;
+}
