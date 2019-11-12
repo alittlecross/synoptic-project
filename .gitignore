@@ -1,4 +1,5 @@
 .DS_Store
 .nyc_output/
+.selenium_output/
 node_modules/
 sandbox

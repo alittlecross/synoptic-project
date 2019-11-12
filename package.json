@@ -4,9 +4,10 @@
   "description": "a quiz manager application",
   "main": "app.js",
   "scripts": {
-    "test": "nyc --reporter=text mocha",
     "migrations": "node db/run.js migrations",
-    "seeds": "node db/run.js seeds"
+    "seeds": "node db/run.js seeds",
+    "test": "nyc --reporter=text mocha",
+    "wdio": "./node_modules/.bin/wdio test/wdio/config.js"
   },
   "author": "alittlecross",
   "license": "ISC",
@@ -19,6 +20,11 @@
     "pg": "^7.12.1"
   },
   "devDependencies": {
+    "@wdio/cli": "^5.16.6",
+    "@wdio/local-runner": "^5.16.6",
+    "@wdio/mocha-framework": "^5.16.5",
+    "@wdio/selenium-standalone-service": "^5.16.5",
+    "@wdio/spec-reporter": "^5.16.5",
     "chai": "^4.2.0",
     "mocha": "^6.2.2",
     "nyc": "^14.1.1",
@@ -29,7 +35,10 @@
       "describe",
       "beforeEach",
       "afterEach",
-      "it"
+      "it",
+      "context",
+      "browser",
+      "$"
     ]
   },
   "nyc": {
