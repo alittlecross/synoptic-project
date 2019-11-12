@@ -95,7 +95,7 @@ a:hover {
 }
 
 input[type="radio"] {
-  margin-top: -1px;
+  margin-top: -3px;
   vertical-align: middle;
 }
 
@@ -118,4 +118,8 @@ label:hover {
 
 .answer {
   font-size: 40px;
+}
+
+.amber {
+  color: #ffbb00;
 }

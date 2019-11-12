@@ -1,10 +1,10 @@
-<%- include('_head', { title: 'Blue Book - Log In' }) %>
+<%- include('_head', { title: 'Blue Book - Log In', jQuery: false }) %>
 
 <h1 class="main-header">Blue Book</h1>
 <h2 class="sub-header">Log In</h2>
 
 <form action="/log-in" method="POST">
-  <input type='text' name='username' placeholder='username' required value="restricted@email.com">
+  <input type='text' name='username' placeholder='username' required value="view@email.com">
   <input type='password' name='password' placeholder='Password' required value="password">
   <button class="submit" type="submit">Submit</button>
 </form>

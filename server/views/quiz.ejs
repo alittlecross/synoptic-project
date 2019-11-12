@@ -1,20 +1,37 @@
-<%- include('_head', { title: 'Quiz - ' + quiz.name }) %>
+<%- include('_head', { title: 'Quiz - ' + quiz.name, jQuery: true }) %>
 
 <%- include('_nav', { page: 'quiz' }) %>
 
 <h2 class="sub-header"><%= quiz.name %></h2>
 
 <div class="questions">
-  <% quiz.questions.forEach(question => { %>
-    <div class="question" ><%= question.question %></div>
+  <% quiz.questions.forEach((question, index) => { %>
+    <div class="question" ><%= index + 1 + '. ' + question.question %>
+    <% if (permission !== 'restricted') { %>
+      <button class="show" data-question="<%= question.id %>" onclick="toggleClass(this)">Answer</button></div>
+    <% } %>
 
     <div class="answers">
-      <% question.answers.forEach(answer => { %>
+      <% question.answers.forEach((answer, index) => { %>
         <div class="answer">
           <input id="answer-<%= answer.id %>" type="radio" name="<%= question.id %>" value="<%= answer.id %>">
-          <label for="answer-<%= answer.id %>"><%= answer.answer %></label>
+          <label for="answer-<%= answer.id %>" 
+          <% if (permission !== 'restricted' && answer.correct) { %>
+            data-correct="<%= question.id %>"
+          <% } %>
+          ><%= String.fromCharCode(65 + index) + '. ' + answer.answer %></label>
         </div>
       <% }) %>
     </div>
   <% }) %>
 </div>
+
+<% if (permission !== 'restricted') { %>
+  <script>
+    toggleClass = button => {
+      const questionId = button.getAttribute("data-question")
+      
+      $(`[data-correct="${questionId}"]`).toggleClass("amber")
+    }
+  </script>
+<% } %>

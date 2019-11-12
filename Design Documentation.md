@@ -6,8 +6,15 @@
 
 #### Assumptions:
 
-- Once logged in, there will be quizzes a user can select.
-- Users with view access are able to see answers so that they can score quiz attempts.
+Page 6, first bullet in the **Viewing and Editing** section: _"A user with Restricted permission can select a quiz from available quizzes. Having selected the quiz, all questions in that quiz can be viewed on the screen."_
+
+This does not state that the answers to each question will also be viewed on the screen, however also on page 6, second bullet in the **Quizzes** section: _"Each answer is a text string, **shown in the user interface** indexed by an uppercase character."_
+
+So, I am assuming the answers to each question will also be viewed on the screen.
+
+Page 7, second bullet in the **Viewing and Editing** section: _"A user with View permission can select and view a quiz as above. They can also select a question to see the associated answers."_
+
+As I have already assumed the answers to each question will be viewed on the screen by a user with Restricted permissions, I am assuming the these sentences to mean: _"A user with View permission can select and view a quiz as above. They can also select a question to see **[its]** associated **[correct]** answer."_
 
 #### User Stories:
 
@@ -98,3 +105,11 @@ The quiz name will be near the top of the page.
 The questions with be below the quiz name.
 
 The answers will be below each question.
+
+View permission:
+
+![Answer](images/answer.png)
+
+When logged in as a user with View permission, there will be a button beside each question.
+
+Each button will toggle a style to indicate the correct answer for that question.
