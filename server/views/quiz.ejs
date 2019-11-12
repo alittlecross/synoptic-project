@@ -10,8 +10,10 @@
 
     <div class="answers">
       <% question.answers.forEach(answer => { %>
-        <input id="answer-<%= answer.id %>" type="radio" name="<%= question.id %>" value="<%= answer.id %>">
-        <label for="answer-<%= answer.id %>" class="answer"><%= answer.answer %></label>
+        <div class="answer">
+          <input id="answer-<%= answer.id %>" type="radio" name="<%= question.id %>" value="<%= answer.id %>">
+          <label for="answer-<%= answer.id %>"><%= answer.answer %></label>
+        </div>
       <% }) %>
     </div>
   <% }) %>

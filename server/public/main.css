@@ -84,4 +84,38 @@ a:hover {
 
 .log-out {
   float: right;
-} 
+}
+
+.questions {
+  display: inline;
+}
+
+.question {
+  font-size: 60px;
+}
+
+input[type="radio"] {
+  margin-top: -1px;
+  vertical-align: middle;
+}
+
+input[type="radio"]:checked+label {
+  color: #00ff88;
+}
+
+label {
+  cursor: pointer;
+  color: #777777;
+}
+
+label:hover {
+  color: #eeeeee;
+}
+
+.answers {
+  display: inline;
+}
+
+.answer {
+  font-size: 40px;
+}
