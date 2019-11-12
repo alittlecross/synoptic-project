@@ -57,6 +57,16 @@ class DatabaseQuizes {
       ORDER BY kind DESC, quizid, questionid, answerid;
     `, [id])
   }
+
+  static async addOne (name) {
+    return DatabaseConnection.query(`
+      INSERT INTO quizes (name, personid)
+      VALUES
+        ($1, '1')
+      
+      RETURNING id;
+    `, [name])
+  }
 }
 
 module.exports = DatabaseQuizes

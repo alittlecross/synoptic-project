@@ -16,9 +16,16 @@ body {
 }
 
 .main-header {
+  display: inline;
   margin: 0;
   font-size: 120px;
   font-weight: 100;
+}
+
+.logo {
+  border-radius: 100%;
+  height: 60px;
+  padding-left: 20px;
 }
 
 .sub-header {

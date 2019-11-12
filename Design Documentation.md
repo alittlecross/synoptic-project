@@ -36,7 +36,7 @@ So that I can take the quiz,
 I would like to see its questions and multiple-choice answers.
 
 As a user with view access,
-So that I can score quiz attempts,
+So that I can check question and answer accuracy,
 I would like to be able to see correct answers.
 
 As a user with edit access,
