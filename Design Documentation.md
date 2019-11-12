@@ -84,3 +84,17 @@ The first page a user will reach after successfully logging in.
 The `log out` link will return the user to the log in page and clear session data.
 
 Each link below the title will link to a quiz.
+
+The quiz page:
+
+![Quiz](images/quiz.png)
+
+The `back` link will return the user to the list page.
+
+The `log out` link will return the user to the log in page and clear session data.
+
+The quiz name will be near the top of the page.
+
+The questions with be below the quiz name.
+
+The answers will be below each question.

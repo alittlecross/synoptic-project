@@ -24,3 +24,33 @@ module.exports.dbGetAll = {
       name: 'Quiz Two' }
   ]
 }
+
+module.exports.dbGetOne = {
+  rowCount: 3,
+  rows: [
+    { kind: 'quiz',
+      name: 'Quiz One',
+      quizid: 1,
+      question: '',
+      questionid: 1,
+      answer: '',
+      answerid: 1,
+      correct: false },
+    { kind: 'question',
+      name: '',
+      quizid: 1,
+      question: 'Question One?',
+      questionid: 1,
+      answer: '',
+      answerid: 1,
+      correct: false },
+    { kind: 'answer',
+      quiz: '',
+      quizid: 1,
+      question: '',
+      questionid: 1,
+      answer: 'Answer One',
+      answerid: 1,
+      correct: true }
+  ]
+}
