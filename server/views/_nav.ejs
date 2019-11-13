@@ -5,5 +5,9 @@
   <% if (page !== 'list') { %>
     <a href="/list">Back</a>
   <% } %>
+  <% if (page === 'quiz' && permission === 'edit') { %>
+    <span>&nbsp;</span>
+    <a href="/edit-<%= quiz.id %>">Edit</a>
+  <% } %>
   <a class="log-out" href="/log-out">Log Out</a>
 </nav>

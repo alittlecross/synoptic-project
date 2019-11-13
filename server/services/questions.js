@@ -9,6 +9,24 @@ class DatabaseQuestions {
       RETURNING id;
     `)
   }
+
+  static async deleteMany (string) {
+    return DatabaseConnection.query(`
+      DELETE FROM questions
+
+      WHERE id IN (${string});
+    `)
+  }
+
+  static async updateMany (string) {
+    return DatabaseConnection.query(`
+      INSERT INTO questions (id, question, quizid) 
+      VALUES (${string})
+      ON CONFLICT (id) DO UPDATE 
+        SET 
+          question = EXCLUDED.question;
+    `)
+  }
 }
 
 module.exports = DatabaseQuestions

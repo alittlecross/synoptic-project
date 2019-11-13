@@ -1,0 +1,21 @@
+<script>
+  deleteContainer = button => {
+    const buttonContainer = button.getAttribute('data-container')
+    const containerSibling = button.parentElement.nextElementSibling
+    const parentContainer = document.getElementById(buttonContainer).parentElement.id
+
+    document.getElementById(buttonContainer).remove()
+    
+    const remainingContainers = document.querySelectorAll('#' + parentContainer + ' > div').length
+
+    if (!remainingContainers) {
+      const type = document.getElementById(parentContainer).className
+      if (type === 'questions') {
+        addAnswer(containerSibling)
+      } else {
+        addQuestion(containerSibling)
+      }
+      
+    }
+  }
+</script> 

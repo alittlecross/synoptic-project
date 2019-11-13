@@ -5,5 +5,5 @@ CREATE TABLE answers (
   createdat timestamptz NOT NULL DEFAULT NOW(),
 
   questionid int NOT NULL,
-  FOREIGN KEY (questionid) REFERENCES questions(id)
+  FOREIGN KEY (questionid) REFERENCES questions(id) ON DELETE CASCADE
 );

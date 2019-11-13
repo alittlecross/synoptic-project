@@ -15,7 +15,7 @@ class Add {
 
   static async questions (body, quizId) {
     const allKeys = Object.keys(body)
-    const questionKeys = allKeys.filter(key => key.match(/question/) && key.match(/-/g).length === 1)
+    const questionKeys = allKeys.filter(key => key.match(/question/) && key.match(/-/g).length === 1 && !key.match(/delete/))
     const string = []
 
     questionKeys.forEach(key => {
@@ -39,7 +39,7 @@ class Add {
       const regExp = new RegExp(key)
       const correctAnswerKey = allKeys.filter(key => key.match(regExp) && key.match(/correct/))
       const correctAnswer = body[correctAnswerKey]
-      const answerKeys = allKeys.filter(key => key.match(regExp) && !key.match(/correct/) && key.match(/answer/))
+      const answerKeys = allKeys.filter(key => key.match(regExp) && !key.match(/correct/) && key.match(/answer/) && !key.match(/delete/))
 
       answerKeys.forEach(key => {
         let bodyAnswer = body[key]

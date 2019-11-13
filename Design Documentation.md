@@ -1,10 +1,6 @@
-# BCS Digital Industries Apprenticeship
+# Design Documentation
 
-## Software Developer Synoptic Project - Quiz Manager
-
-### Design Documentation
-
-#### Assumptions:
+## Assumptions
 
 Page 6, first bullet in the **Viewing and Editing** section: _"A user with Restricted permission can select a quiz from available quizzes. Having selected the quiz, all questions in that quiz can be viewed on the screen."_
 
@@ -16,7 +12,7 @@ Page 7, second bullet in the **Viewing and Editing** section: _"A user with View
 
 As I have already assumed the answers to each question will be viewed on the screen by a user with Restricted permissions, I am assuming the these sentences to mean: _"A user with View permission can select and view a quiz as above. They can also select a question to see **[its]** associated **[correct]** answer."_
 
-#### User Stories:
+## User Stories
 
 ```
 As a user,
@@ -56,7 +52,7 @@ So that I can expand a quiz,
 I would like to be able to add a question(s), or an answer(s).
 ```
 
-#### Data Model:
+## Data Model
 
 The below was drawn using [SqlDBM](https://app.sqldbm.com/):
 
@@ -66,13 +62,15 @@ The Primary Key from the `permissions` table acts as a Foreign Key in the `peopl
 The Primary Key from the `quizes` table acts as a Foreign Key in the `questions` table.  
 The Primary Key from the `questions` tabale acts as a Foreign Key in the `answers` table.  
 
-### User Interface:
+## User Interface
 
-The log in page:
+### _The Log In Page_
 
-![Log In UI](images/log-in.png)
+![Log In](images/log-in.png)
 
 The first page a user will reach, and the only page a unlogged in user can reach.
+
+The brand name and logo will be visible at the top of the page.
 
 The `username` input will be set as a required text input, the user being expected to enter the pre-defined username.
 
@@ -82,34 +80,58 @@ The `Submit` button will validate that both required fields have something in th
 
 The `Username or password incorrect` message will only be visible after an unsuccessful log in attempt.
 
-The list page:
+### _The List Page_
 
 ![List](images/list.png)
 
 The first page a user will reach after successfully logging in.
 
-The `log out` link will return the user to the log in page and clear session data.
+The `Log Out` link will be on the top right of the page and will return the user to the log in page and clear session data.
 
-Each link below the title will link to a quiz.
+Each link below the brand name and logo will link to a quiz.
 
-The quiz page:
+### _The Quiz Page_
 
 ![Quiz](images/quiz.png)
 
-The `back` link will return the user to the list page.
+The `Back` link will be on the top left of the page and will return the user to the list page.
 
-The `log out` link will return the user to the log in page and clear session data.
+The brand name and logo will be visible near the top of the page.
 
-The quiz name will be near the top of the page.
+The quiz name will be below the brand namd and logo.
 
 The questions with be below the quiz name.
 
 The answers will be below each question.
 
-View permission:
+### _View Permission_
 
-![Answer](images/answer.png)
+![Answer](images/quiz-not-restricted.png)
 
-When logged in as a user with View permission, there will be a button beside each question.
+When logged in as a user with View permission, there will be a `Show/hide correct answer` button beside each question.
 
-Each button will toggle a style to indicate the correct answer for that question.
+Each button will toggle a style to indicate the correct answer for that question, and the text on the `Show/hide correct answer` button.
+
+### _Edit Permission_
+
+![List Edit Permission](images/list-edit.png)
+
+When logged in as a user with Edit permission, there be an `Add` link above the brand name and logo linking to the add page.
+
+### _The Add Page_
+
+![Add](images/add.png)
+
+The `Quiz Name` input will be set as a required text input, the user being expected to enter the name for their quiz.
+
+The `Question` input will be set as a required text input, the user being expected to enter at least one question.
+
+The `Answer` input will be set as a required text input, the user being expected to enter at least one answer.
+
+The `Correct` input will be set as a required radio input, the user being expected to select at least one answer as being correct.
+
+The `Delete this answer` button will delete the answer above it, and reindex all answers for that question.
+
+The `Add another answer` button will add another `Answer` input for that question and a corresponding `Correct` input.
+
+The `Delete this question` button will delete the question above it, inluding all answers, and reindex all questions for the quiz.

@@ -31,4 +31,8 @@ app.get('/add', require('./server/routes/add').get)
 
 app.post('/add', require('./server/routes/add').post)
 
+app.get('/edit-:id', require('./server/routes/edit-id').get)
+
+app.post('/edit-:id', require('./server/routes/edit-id').post)
+
 app.listen(port)

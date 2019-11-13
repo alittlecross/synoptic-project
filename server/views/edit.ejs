@@ -1,0 +1,83 @@
+<%- include('_head', { title: 'Quiz - Edit' }) %>
+
+<%- include('_nav', { page: 'edit' }) %>
+
+<%- include('_branding') %>
+
+<form id="edit-form" action="/edit-<%= quiz.id %>" method="POST">
+  <div id="quiz" class="quiz">
+    <input id="sub-header" type="text" name="quiz-name" placeholder="Quiz Name" value="<%= quiz.name %>" required>
+    <% quiz.questions.forEach(question => { %>
+    <div id="old-<%= question.id %>" class="questions">
+      <input class="question" type="text" name="old-<%= question.id %>" placeholder="Question" value="<%= question.question %>" required>
+      <% question.answers.forEach(answer => { %>
+      <div id="old-<%= question.id %>-answer-<%= answer.id %>" class="answers">
+        <input class="answer" type="text" name="old-<%= question.id %>-answer-<%= answer.id %>" placeholder="Answer" value="<%= answer.answer %>" required>
+        <div class="correct">
+          <input id="old-<%= question.id %>-correct-answer-<%= answer.id %>" type="radio" name="old-<%= question.id %>-correct-answer" <% if (answer.correct) { %>checked<% } %> value="old-<%= question.id %>-answer-<%= answer.id %>" required>
+          <label for="old-<%= question.id %>-correct-answer-<%= answer.id %>">Correct</label>
+        </div>
+        <button class="delete" type="button" data-container="old-<%= question.id %>-answer-<%= answer.id %>" onclick="deleteAnswer()">Delete this answer</button>
+      </div>
+      <% }) %>
+      <!-- add another answer button -->
+      <span class="dash">- - - - - - - - - - - -</span>
+      <button class="delete" type="button" data-container="old-<%= question.id %>" onclick="deleteQuestion()">Delete this question</button>
+    </div>
+    <% }) %>
+    <button type="button" data-question-number="1" onclick="addQuestion()">Add another question</button>
+  </div>
+  <input id="quiz-id" type="text" name="quiz-id" value="<%= quiz.id %>" hidden>
+  <input id="delete-quiz" type="text" name="delete-quiz" value="" hidden>
+  <input id="delete-questions" type="text" name="delete-questions" value="" hidden>
+  <input id="delete-answers" type="text" name="delete-answers" value="" hidden>
+  <button id="submit" type="submit">Submit</button>
+</form>
+
+<button form="edit-form" class="delete" onclick="deleteQuiz()">Delete this quiz</button>
+
+<%- include('_delete') %>
+
+<%- include('_add') %>
+
+<script>
+  deleteQuestion = button => {
+    const container = button.getAttribute('data-container')
+    const id = container.split('-')[1]
+    const deleteQuestions = document.getElementById('delete-questions')
+    
+    deleteContainer(button)
+
+    let value = deleteQuestions.getAttribute('value')
+
+    value = value ? value.split() : [] 
+    value.push(id)
+    
+    deleteQuestions.setAttribute('value', value.join())
+  }
+
+  deleteAnswer = button => {
+    const container = button.getAttribute('data-container')
+    const id = container.split('-')[3]
+    const deleteAnswers = document.getElementById('delete-answers')
+    
+    deleteContainer(button)
+
+    let value = deleteAnswers.getAttribute('value')
+
+    value = value ? value.split() : [] 
+    value.push(id)
+    
+    deleteAnswers.setAttribute('value', value.join())
+  }
+
+  deleteQuiz = () => {
+    const deleteQuiz = document.getElementById('delete-quiz')
+    const quizId = document.getElementById('quiz-id').getAttribute('value')
+
+    deleteQuiz.setAttribute('value', quizId)
+    
+    document.getElementById('quiz').remove()
+    document.getElementById('edit-form').submit()
+  }
+</script>

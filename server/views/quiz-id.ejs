@@ -4,7 +4,7 @@
 
 <%- include('_branding') %>
 
-<h2 class="sub-header"><%= quiz.name %></h2>
+<h2 id="sub-header"><%= quiz.name %></h2>
 
 <div class="questions">
   <% quiz.questions.forEach((question, index) => { %>
@@ -35,7 +35,7 @@
       state.innerHTML = state.innerHTML === 'Show' ? 'Hide' : 'Show'
             
       $.get(`question-${questionId}-correct-answer`, correctAnswer => {
-        $(`[for="answer-${correctAnswer.id}"]`).toggleClass("amber")
+        $(`[for="answer-${correctAnswer.id}"]`).toggleClass('amber')
       })
     }
   </script>

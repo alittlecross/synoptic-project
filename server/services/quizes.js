@@ -67,6 +67,24 @@ class DatabaseQuizes {
       RETURNING id;
     `, [name])
   }
+
+  static async deleteOne (id) {
+    return DatabaseConnection.query(`
+      DELETE FROM quizes
+
+      WHERE id = $1;
+    `, [id])
+  }
+
+  static async updateOne (name, id) {
+    return DatabaseConnection.query(`
+      UPDATE quizes
+      SET
+        name = $1
+      
+      WHERE id = $2;
+    `, [name, id])
+  }
 }
 
 module.exports = DatabaseQuizes

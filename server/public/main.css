@@ -15,39 +15,42 @@ body {
   color: #eeeeee;
 }
 
-.main-header {
+#main-header {
   display: inline;
   margin: 0;
   font-size: 120px;
   font-weight: 100;
 }
 
-.logo {
+#logo {
   border-radius: 100%;
   height: 60px;
   padding-left: 20px;
 }
 
-.sub-header {
+#sub-header {
   margin: 0;
   font-size: 100px;
   font-weight: 100;
 }
 
 form {
-  margin-bottom: 10px;
+  margin: 0;
 }
 
 input[type=text],
 input[type=password] {
-  display: block;
   outline: none;
   border: none;
   width: 100%;
   background: none;
-  font-size: 60px;
   font-family: 'meatloaf_sketched';
   color: #eeeeee;
+}
+
+#username, #password {
+  display: block;
+  font-size: 60px;
 }
 
 button {
@@ -66,9 +69,9 @@ button:hover {
   color: #eeeeee;
 }
 
-.submit {
+#submit {
   display: block;
-  font-size: 60px;
+  font-size: 80px;
   font-family: 'meatloaf_sketched';
 }
 
@@ -140,6 +143,7 @@ label:hover {
 }
 
 .dash {
+  display: block;
   font-size: 50px;
   line-height: 10px;
 }

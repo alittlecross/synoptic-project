@@ -4,5 +4,5 @@ CREATE TABLE questions (
   createdat timestamptz NOT NULL DEFAULT NOW(),
   
   quizid int NOT NULL,
-  FOREIGN KEY (quizid) REFERENCES quizes(id)
+  FOREIGN KEY (quizid) REFERENCES quizes(id) ON DELETE CASCADE
 );
