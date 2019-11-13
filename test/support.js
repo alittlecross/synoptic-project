@@ -54,3 +54,17 @@ module.exports.dbGetOne = {
       correct: true }
   ]
 }
+
+module.exports.dbAdd = {
+  rowCount: 1,
+  rows: [
+    { id: 1 }
+  ]
+}
+
+module.exports.body = {
+  'quiz-name': 'Quiz One',
+  'question-1': 'Question One?',
+  'question-1-answer-1': 'Answer One',
+  'question-1-correct-answer': 'question-1-answer-1'
+}
