@@ -5,7 +5,9 @@ module.exports = async (req, res) => {
     const permission = req.session.user.permission
     const quiz = await Quiz.getOne(req.params.id)
 
-    res.render('quiz.ejs', {
+    req.session.quiz = quiz
+
+    res.render('quiz-id.ejs', {
       permission: permission,
       quiz: quiz
     })

@@ -23,7 +23,9 @@ app.get('/list', require('./server/routes/list'))
 
 app.get('/log-out', require('./server/routes/log-out'))
 
-app.get('/quiz-:id', require('./server/routes/quiz'))
+app.get('/quiz-:id', require('./server/routes/quiz-id'))
+
+app.get('/question-:id-correct-answer', require('./server/routes/question-id-correct-answer'))
 
 app.get('/add', require('./server/routes/add').get)
 

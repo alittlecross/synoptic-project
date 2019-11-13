@@ -1,0 +1,42 @@
+<%- include('_head', { title: 'Quiz - ' + quiz.name }) %>
+
+<%- include('_nav', { page: 'quiz' }) %>
+
+<%- include('_branding') %>
+
+<h2 class="sub-header"><%= quiz.name %></h2>
+
+<div class="questions">
+  <% quiz.questions.forEach((question, index) => { %>
+    <div class="question" ><%= index + 1 + '. ' + question.question %>
+    <% if (permission !== 'restricted') { %>
+      <button class="show" onclick="toggleClass(this, <%= question.id %>)"><span>Show</span> correct answer</button>
+    <% } %>
+    </div>
+
+    <div class="answers">
+      <% question.answers.forEach((answer, index) => { %>
+        <div class="answer">
+          <input id="answer-<%= answer.id %>" type="radio" name="question-<%= question.id %>" value="<%= answer.id %>">
+          <label for="answer-<%= answer.id %>"><%= String.fromCharCode(65 + index) + '. ' + answer.answer %></label>
+        </div>
+      <% }) %>
+    </div>
+  <% }) %>
+</div>
+
+<% if (permission !== 'restricted') { %>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  
+  <script>
+    toggleClass = (button, questionId) => {
+      const state = button.firstElementChild
+      
+      state.innerHTML = state.innerHTML === 'Show' ? 'Hide' : 'Show'
+            
+      $.get(`question-${questionId}-correct-answer`, correctAnswer => {
+        $(`[for="answer-${correctAnswer.id}"]`).toggleClass("amber")
+      })
+    }
+  </script>
+<% } %>

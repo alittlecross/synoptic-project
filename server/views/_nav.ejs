@@ -1,4 +1,7 @@
 <nav>
+  <% if (page === 'list' && permission === 'edit') { %>
+    <a href="/add">Add</a>
+  <% } %>
   <% if (page !== 'list') { %>
     <a href="/list">Back</a>
   <% } %>

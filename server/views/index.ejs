@@ -1,10 +1,11 @@
-<%- include('_head', { title: 'Log In', jQuery: false }) %>
+<%- include('_head', { title: 'Log In' }) %>
 
 <%- include('_branding') %>
+
 <h2 class="sub-header">Log In</h2>
 
 <form action="/log-in" method="POST">
-  <input type='text' name='username' placeholder='username' required value="view@email.com">
+  <input type='text' name='username' placeholder='username' required value="edit@email.com">
   <input type='password' name='password' placeholder='Password' required value="password">
   <button class="submit" type="submit">Submit</button>
 </form>

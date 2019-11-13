@@ -1,0 +1,67 @@
+<%- include('_head', { title: 'Quiz - Add' }) %>
+
+<%- include('_nav', { page: 'add' }) %>
+
+<%- include('_branding') %>
+
+<form id="add-form" action="/add" method="POST">
+  <input class="sub-header" type="text" name="quiz-name" placeholder="Quiz Name" value="Science">
+  <div id="question-1" class="questions">
+    <input class="question" type="text" name="question-1" placeholder="Question" value="What is the speed of sound?">
+    <div id="question-1-answer-1" class="answers">
+      <input class="answer" type="text" name="question-1-answer-1" placeholder="Answer" value="343 m/s">
+      <input id="question-1-correct-answer-1" type="radio" name="question-1-correct-answer" value="question-1-answer-1">
+      <label for="question-1-correct-answer-1" class="correct">Correct</label>
+      <button class="delete" type="button" data-container="question-1-answer-1" onclick="deleteContainer(this)">Delete this answer</button>
+    </div>
+    <button type="button" data-answer-number="1" onclick="addAnswer(this)">Add another answer</button>
+    <div class="dash">- - - - - - - - - - - -</div>
+    <button class="delete" type="button" data-container="question-1" onclick="deleteContainer(this)">Delete this question</button>
+  </div>
+  <button type="button" data-question-number="1" onclick="addQuestion(this)">Add another question</button>
+  <button class="submit" type="submit">Submit</button>
+</form>
+
+<script>
+  deleteContainer = button => {
+    const container = button.getAttribute('data-container')
+    document.getElementById(container).remove()
+  }
+
+  addAnswer = button => {
+    const question = button.parentNode.getAttribute("id")
+    const number = parseInt(button.getAttribute("data-answer-number")) + 1
+
+    button.setAttribute("data-answer-number", number)
+
+    button.insertAdjacentHTML("beforebegin", `
+      <div id="${question}-answer-${number}" class="answers">
+        <input class="answer" type="text" name="${question}-answer-${number}" placeholder="Answer" value="299,792,458 m/s">
+        <input id="${question}-correct-answer-${number}" type="radio" name="${question}-correct-answer" value="${question}-answer-${number}">
+        <label for="${question}-correct-answer-${number}" class="correct">Correct</label>
+        <button class="delete" type="button" data-container="${question}-answer-${number}" onclick="deleteContainer(this)">Delete this answer</button>
+      </div>
+    `)
+  }
+
+  addQuestion = button => {
+    const number = parseInt(button.getAttribute("data-question-number")) + 1
+
+    button.setAttribute("data-question-number", number)
+
+    button.insertAdjacentHTML("beforebegin", `
+      <div id="question-${number}" class="questions">
+        <input class="question" type="text" name="question-${number}" placeholder="Question" value="What is the speed of light?">
+        <div id="question-${number}-answer-1" class="answers">
+          <input class="answer" type="text" name="question-${number}-answer-1" placeholder="Answer" value="343 m/s">
+          <input id="question-${number}-correct-answer-1" type="radio" name="question-${number}-correct-answer" value="question-${number}-answer-1">
+          <label for="question-${number}-correct-answer-1" class="correct">Correct</label>
+          <button class="delete" type="button" data-container="question-${number}-answer-1" onclick="deleteContainer(this)">Delete this answer</button>
+        </div>
+        <button type="button" data-answer-number="1" onclick="addAnswer(this)">Add another answer</button>
+        <div class="dash">- - - - - - - - - - - -</div>
+        <button class="delete" type="button" data-container="question-${number}" onclick="deleteContainer(this)">Delete this question</button>
+      </div>
+    `)
+  }
+</script>

@@ -60,9 +60,9 @@ class DatabaseQuizes {
 
   static async addOne (name) {
     return DatabaseConnection.query(`
-      INSERT INTO quizes (name, personid)
+      INSERT INTO quizes (name)
       VALUES
-        ($1, '1')
+        ($1)
       
       RETURNING id;
     `, [name])
