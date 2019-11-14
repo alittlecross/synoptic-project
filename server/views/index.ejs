@@ -5,11 +5,11 @@
 <h2 id="sub-header">Log In</h2>
 
 <form action="/log-in" method="POST">
-  <input id="username" type="text" name="username" placeholder="Username" required value="edit@email.com">
-  <input id="password" type="password" name="password" placeholder="Password" required value="password">
-  <button id="submit" type="submit">Submit</button>
+  <input id="username" type="text" name="username" placeholder="Username" required>
+  <input id="password" type="password" name="password" placeholder="Password" required>
+  <button id="post" type="submit">Submit</button>
 </form>
 
 <% if (flash && flash.message) { %>
-  <div class="flash"><%= flash.message %></div>
+  <div id="flash"><%= flash.message %></div>
 <% } %>

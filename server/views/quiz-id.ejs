@@ -5,25 +5,20 @@
 <%- include('_branding') %>
 
 <h2 id="sub-header"><%= quiz.name %></h2>
-
-<div class="questions">
+<ol type="1">
   <% quiz.questions.forEach((question, index) => { %>
-    <div class="question" ><%= index + 1 + '. ' + question.question %>
-    <% if (permission !== 'restricted') { %>
-      <button class="show" onclick="toggleClass(this, <%= question.id %>)"><span>Show</span> correct answer</button>
-    <% } %>
-    </div>
-
-    <div class="answers">
-      <% question.answers.forEach((answer, index) => { %>
-        <div class="answer">
-          <input id="answer-<%= answer.id %>" type="radio" name="question-<%= question.id %>" value="<%= answer.id %>">
-          <label for="answer-<%= answer.id %>"><%= String.fromCharCode(65 + index) + '. ' + answer.answer %></label>
-        </div>
-      <% }) %>
-    </div>
+  <li class="question" ><%= question.question %><% if (permission !== 'restricted') { %>
+    <button class="show" onclick="toggleClass(this, <%= question.id %>)"><span>Show</span> correct answer</button><% } %></li>
+  <ol type="A">
+    <% question.answers.forEach((answer, index) => { %>
+    <li class="answer">
+      <input id="answer-<%= answer.id %>" type="radio" name="question-<%= question.id %>" value="<%= answer.id %>" hidden>
+      <label for="answer-<%= answer.id %>"><%= answer.answer %></label>
+    </li>
+    <% }) %>
+  </ol>
   <% }) %>
-</div>
+</ol>
 
 <% if (permission !== 'restricted') { %>
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>

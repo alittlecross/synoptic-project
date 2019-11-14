@@ -1,21 +1,21 @@
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
 <script>
   deleteContainer = button => {
     const buttonContainer = button.getAttribute('data-container')
-    const containerSibling = button.parentElement.nextElementSibling
-    const parentContainer = document.getElementById(buttonContainer).parentElement.id
+    const containerSibling = $(`#${buttonContainer}`).parent().children().last()
+    
+    const parentContainer = document.getElementById(buttonContainer).parentElement.parentElement.id
 
     document.getElementById(buttonContainer).remove()
-    
-    const remainingContainers = document.querySelectorAll('#' + parentContainer + ' > div').length
 
-    if (!remainingContainers) {
-      const type = document.getElementById(parentContainer).className
-      if (type === 'questions') {
-        addAnswer(containerSibling)
-      } else {
-        addQuestion(containerSibling)
-      }
-      
+    const remainingContainers = document.querySelectorAll('#' + parentContainer + ' > ol > div').length
+    const type = document.getElementById(parentContainer).className
+
+    if (type === 'questions' && remainingContainers === 1) {
+      addAnswer(containerSibling[0])
+    } else if (!remainingContainers) {
+      addQuestion(containerSibling[0])
     }
   }
 </script> 

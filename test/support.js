@@ -63,8 +63,82 @@ module.exports.dbAdd = {
 }
 
 module.exports.body = {
-  'quiz-name': 'Quiz One',
-  'question-1': 'Question One?',
-  'question-1-answer-1': 'Answer One',
-  'question-1-correct-answer': 'question-1-answer-1'
+  'newQuizName': 'Quiz One',
+  'newQuestion-1': 'Question One?',
+  'newQuestion-1-newAnswer-1': 'Question One Answer One',
+  'newQuestion-1-newAnswer-2': 'Question One Answer Two',
+  'newQuestion-1-correct-answer': 'newQuestion-1-newAnswer-1',
+  'newQuestion-2': 'Question One?',
+  'newQuestion-2-newAnswer-1': 'Question Two Answer One',
+  'newQuestion-2-newAnswer-2': 'Question Two Answer Two',
+  'newQuestion-2-correct-answer': 'newQuestion-2-newAnswer-1'
+}
+
+module.exports.quiz = {
+  id: 1,
+  name: 'Quiz One',
+  questions: [ {
+    id: 1,
+    question: 'Question One?',
+    answers: [ {
+      id: 1,
+      answer: 'Question One Answer One',
+      correct: true
+    }, {
+      id: 2,
+      answer: 'Question One Answer Two',
+      correct: false
+    } ]
+  }, {
+    id: 2,
+    question: 'Question Two?',
+    answers: [ {
+      id: 3,
+      answer: 'Question Two Answer One',
+      correct: true
+    }, {
+      id: 4,
+      answer: 'Question Two Answer Two',
+      correct: false
+    } ]
+  } ]
+}
+
+module.exports.updateDeletions = {
+  'quizId': '1',
+  'deleteQuiz': '1',
+  'deleteQuestions': '1',
+  'deleteAnswers': '1'
+}
+
+module.exports.updateChanges = {
+  'oldQuizName': 'Quiz Two',
+  'oldQuestion-1': 'Question One?',
+  'oldQuestion-1-oldAnswer-1': 'Question One Answer One',
+  'oldQuestion-1-oldAnswer-2': 'Question One Answer Two',
+  'oldQuestion-1-correct-answer': 'oldQuestion-1-oldAnswer-1',
+  'oldQuestion-2': 'Question Three?',
+  'oldQuestion-2-oldAnswer-3': 'Question Three Answer One',
+  'oldQuestion-2-oldAnswer-4': 'Question Three Answer Two',
+  'oldQuestion-2-correct-answer': 'oldQuestion-2-oldAnswer-4',
+  'quizId': '1',
+  'deleteQuiz': '',
+  'deleteQUestions': '',
+  'deleteAnswers': ''
+}
+
+module.exports.updateNoChanges = {
+  'oldQuizName': 'Quiz One',
+  'oldQuestion-1': 'Question One?',
+  'oldQuestion-1-oldAnswer-1': 'Question One Answer One',
+  'oldQuestion-1-oldAnswer-2': 'Question One Answer Two',
+  'oldQuestion-1-correct-answer': 'oldQuestion-1-oldAnswer-1',
+  'oldQuestion-2': 'Question Two?',
+  'oldQuestion-2-oldAnswer-3': 'Question Two Answer One',
+  'oldQuestion-2-oldAnswer-4': 'Question Two Answer Two',
+  'oldQuestion-2-correct-answer': 'oldQuestion-2-oldAnswer-3',
+  'quizId': '1',
+  'deleteQuiz': '',
+  'deleteQuestions': '',
+  'deleteAnswers': ''
 }

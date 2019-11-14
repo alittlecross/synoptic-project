@@ -16,8 +16,12 @@ module.exports = {
 
     delete req.session.edit
 
-    await Edit.quiz(req.body, quiz)
+    const deleted = await Edit.quiz(req.body, quiz)
 
-    res.redirect(`/list`)
+    if (deleted) {
+      res.redirect('/list')
+    } else {
+      res.redirect(`/quiz-${quiz.id}`)
+    }
   }
 }

@@ -5,29 +5,40 @@
 <%- include('_branding') %>
 
 <form id="add-form" action="/add" method="POST">
-  <div id="quiz" class="quiz">
-    <input id="sub-header" type="text" name="quiz-name" placeholder="Quiz Name" value="Science" required>
-    
-    <div id="question-1" class="questions">
-      <input class="question" type="text" name="question-1" placeholder="Question" value="What is the speed of sound?" required>
-      
-      <div id="question-1-answer-1" class="answers">
-        <input class="answer" type="text" name="question-1-answer-1" placeholder="Answer" value="343 m/s" required>
-        <div class="correct">
-          <input id="question-1-correct-answer-1" type="radio" name="question-1-correct-answer" value="question-1-answer-1" required>
-          <label for="question-1-correct-answer-1">Correct</label>
-        </div>
-        <button class="delete" type="button" data-container="question-1-answer-1" onclick="deleteContainer(this)">Delete this answer</button>
-      </div>
-      
-      <button type="button" data-answer-number="1" onclick="addAnswer(this)">Add another answer</button>
-      <span class="dash">- - - - - - - - - - - -</span>
-      <button class="delete" type="button" data-container="question-1" onclick="deleteContainer(this)">Delete this question</button>
-    </div>
+  <div id="quiz" class="quiz" data-question-number="1" >
+    <input id="sub-header" type="text" name="newQuizName" placeholder="Quiz Name" required>
+    <ol type="1">
+      <div id="newQuestion-1" class="questions" data-answer-number="2" >
+        <li class="question"><input class="question" type="text" name="newQuestion-1" placeholder="Question" required></li>
+        <ol type="A">
 
-    <button type="button" data-question-number="1" onclick="addQuestion(this)">Add another question</button>
+          <div id="newQuestion-1-newAnswer-1" class="answers">
+            <li class="answer"><input class="answer" type="text" name="newQuestion-1-newAnswer-1" placeholder="Answer" required></li>
+            <div class="correct">
+              <input id="newQuestion-1-correct-answer-1" type="radio" name="newQuestion-1-correct-answer" value="newQuestion-1-newAnswer-1" required>
+              <label for="newQuestion-1-correct-answer-1">Correct</label>
+            </div>
+            <button class="delete" type="button" data-container="newQuestion-1-newAnswer-1" onclick="deleteContainer(this)">Delete this answer</button>
+          </div>
+
+          <div id="newQuestion-1-newAnswer-2" class="answers">
+            <li class="answer"><input class="answer" type="text" name="newQuestion-1-newAnswer-2" placeholder="Answer" required></li>
+            <div class="correct">
+              <input id="newQuestion-1-correct-answer-2" type="radio" name="newQuestion-1-correct-answer" value="newQuestion-1-newAnswer-2" required>
+              <label for="newQuestion-1-correct-answer-2">Correct</label>
+            </div>
+            <button class="delete" type="button" data-container="newQuestion-1-newAnswer-2" onclick="deleteContainer(this)">Delete this answer</button>
+          </div>
+
+          <button type="button" onclick="addAnswer(this)">Add another answer</button>
+        </ol>
+        <span class="dash">- - - - - - - - - - - - - - -</span>
+        <button class="delete" type="button" data-container="newQuestion-1" onclick="deleteContainer(this)">Delete this question</button>
+      </div>
+      <button type="button" onclick="addQuestion(this)">Add another question</button>
+    </ol>
   </div>
-  <button id="submit" type="submit">Submit</button>
+  <button id="post" type="submit">Submit</button>
 </form>
 
 <%- include('_delete') %>

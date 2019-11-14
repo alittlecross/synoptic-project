@@ -61,7 +61,7 @@ describe('class Add', () => {
 
   describe('.answers', () => {
     it('should add an answer(s) to the database', async () => {
-      await Add.answers(['question-1'], ['quiz-name', 'question-1', 'question-1-answer-1', 'question-1-correct-answer'], body, ['1'])
+      await Add.answers(['newQuestion-1'], ['newQuizName', 'newQuestion-1', 'newQuestion-1-newAnswer-1', 'newQuestion-1-correct-answer'], body, ['1'])
 
       expect(answersAddMany.callCount).equal(1)
     })

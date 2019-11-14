@@ -1,41 +1,57 @@
 <script>
   addAnswer = button => {
-    const question = button.parentNode.getAttribute('id')
-    const number = parseInt(button.getAttribute('data-answer-number')) + 1
+    const container = button.parentNode.parentNode
+    
+    const question = container.getAttribute('id')
+    const number = parseInt(container.getAttribute('data-answer-number')) + 1
 
-    button.setAttribute('data-answer-number', number)
+    container.setAttribute('data-answer-number', number)
 
     button.insertAdjacentHTML('beforebegin', `
-      <div id="${question}-answer-${number}" class="answers">
-        <input class="answer" type="text" name="${question}-answer-${number}" placeholder="Answer" value="299,792,458 m/s" required>
+      <div id="${question}-newAnswer-${number}" class="answers">
+        <li class="answer"><input class="answer" type="text" name="${question}-newAnswer-${number}" placeholder="Answer" required></li>
         <div class="correct">
-          <input id="${question}-correct-answer-${number}" type="radio" name="${question}-correct-answer" value="${question}-answer-${number}" required>
+          <input id="${question}-correct-answer-${number}" type="radio" name="${question}-correct-answer" value="${question}-newAnswer-${number}" required>
           <label for="${question}-correct-answer-${number}">Correct</label>
         </div>
-        <button class="delete" type="button" data-container="${question}-answer-${number}" onclick="deleteContainer(this)">Delete this answer</button>
+        <button class="delete" type="button" data-container="${question}-newAnswer-${number}" onclick="deleteContainer(this)">Delete this answer</button>
       </div>
     `)
   }
 
   addQuestion = button => {
-    const number = parseInt(button.getAttribute('data-question-number')) + 1
+    const container = button.parentNode.parentNode
+    const number = parseInt(container.getAttribute('data-question-number')) + 1
 
-    button.setAttribute('data-question-number', number)
+    container.setAttribute('data-question-number', number)
 
     button.insertAdjacentHTML('beforebegin', `
-      <div id="question-${number}" class="questions">
-        <input class="question" type="text" name="question-${number}" placeholder="Question" value="What is the speed of light?" required>
-        <div id="question-${number}-answer-1" class="answers">
-          <input class="answer" type="text" name="question-${number}-answer-1" placeholder="Answer" value="343 m/s" required>
+      <div id="newQuestion-${number}" class="questions" data-answer-number="2" >
+        <li class="question"><input class="question" type="text" name="newQuestion-${number}" placeholder="Question" required></li>
+        <ol type="A">
+
+        <div id="newQuestion-${number}-newAnswer-1" class="answers">
+          <li class="answer" ><input class="answer" type="text" name="newQuestion-${number}-newAnswer-1" placeholder="Answer" required></li>
           <div class="correct">
-            <input id="question-${number}-correct-answer-1" type="radio" name="question-${number}-correct-answer" value="question-${number}-answer-1" required>
-            <label for="question-${number}-correct-answer-1">Correct</label>
+            <input id="newQuestion-${number}-correct-answer-1" type="radio" name="newQuestion-${number}-correct-answer" value="newQuestion-${number}-newAnswer-1" required>
+            <label for="newQuestion-${number}-correct-answer-1">Correct</label>
           </div>
-          <button class="delete" type="button" data-container="question-${number}-answer-1" onclick="deleteContainer(this)">Delete this answer</button>
+          <button class="delete" type="button" data-container="newQuestion-${number}-newAnswer-1" onclick="deleteContainer(this)">Delete this answer</button>
         </div>
-        <button type="button" data-answer-number="1" onclick="addAnswer(this)">Add another answer</button>
-        <span class="dash">- - - - - - - - - - - -</span>
-        <button class="delete" type="button" data-container="question-${number}" onclick="deleteContainer(this)">Delete this question</button>
+
+        <div id="newQuestion-${number}-newAnswer-2" class="answers">
+          <li class="answer" ><input class="answer" type="text" name="newQuestion-${number}-newAnswer-2" placeholder="Answer" required></li>
+          <div class="correct">
+            <input id="newQuestion-${number}-correct-answer-2" type="radio" name="newQuestion-${number}-correct-answer" value="newQuestion-${number}-newAnswer-2" required>
+            <label for="newQuestion-${number}-correct-answer-2">Correct</label>
+          </div>
+          <button class="delete" type="button" data-container="newQuestion-${number}-newAnswer-2" onclick="deleteContainer(this)">Delete this answer</button>
+        </div>
+
+        <button type="button"onclick="addAnswer(this)">Add another answer</button>
+        </ol>
+        <span class="dash">- - - - - - - - - - - - - - -</span>
+        <button class="delete" type="button" data-container="newQuestion-${number}" onclick="deleteContainer(this)">Delete this question</button>
       </div>
     `)
   }

@@ -1,3 +1,54 @@
+/* #region #logo */
+
+#logo {
+  border-radius: 100%;
+  height: 60px;
+  padding-left: 20px;
+}
+
+/* #endregion */
+/* #region color properties */
+
+a,
+body,
+input[type=text],
+input[type=password],
+button:hover,
+label:hover {
+  color: #eeeeee;
+}
+
+button,
+label,
+a:hover {
+  color: #777777;
+}
+
+input[type=text],
+input[type=password] {
+  outline-color: #eeeeee;
+}
+
+.delete:hover,
+#flash {
+  color: #ff0066;
+}
+
+body {
+  background-color: #333333;
+}
+
+input[type=radio]:checked + label {
+  color: #00ff88;
+}
+
+.amber {
+  color: #ffbb00;
+}
+
+/* #endregion */
+/* #region font properties */
+
 @font-face {
   font-family: 'meatloaf_sketched';
   src: url('fonts/meatloaf_sketched.ttf') format('truetype');
@@ -8,142 +59,130 @@
   src: url('fonts/meatloaf_outline.ttf') format('truetype');
 }
 
-body {
-  background-color: #333333;
-  cursor: default;
+body,
+input[type=text],
+input[type=password],
+button:hover,
+#post {
   font-family: 'meatloaf_sketched';
-  color: #eeeeee;
+}
+
+a,
+.question,
+#flash,
+#password,
+#username {
+  font-size: 60px;
+}
+
+button,
+.answer,
+.correct,
+.dash {
+  font-size: 40px;
+}
+
+button {
+  font-family: 'meatloaf_outline';
 }
 
 #main-header {
-  display: inline;
-  margin: 0;
   font-size: 120px;
   font-weight: 100;
 }
 
-#logo {
-  border-radius: 100%;
-  height: 60px;
-  padding-left: 20px;
+#post {
+  font-size: 80px;
 }
 
 #sub-header {
-  margin: 0;
   font-size: 100px;
   font-weight: 100;
 }
 
-form {
-  margin: 0;
+/* #endregion */
+/* #region remaining style properties */
+
+a,
+button,
+label {
+  cursor: pointer;
 }
 
+button,
 input[type=text],
 input[type=password] {
-  outline: none;
   border: none;
-  width: 100%;
   background: none;
-  font-family: 'meatloaf_sketched';
-  color: #eeeeee;
 }
 
-#username, #password {
-  display: block;
-  font-size: 60px;
+a {
+  text-decoration: none;
+}
+
+body {
+  cursor: default;
 }
 
 button {
   outline: none;
-  border: none;
-  padding: 1px;
-  background: none;
-  cursor: pointer;
-  font-size: 40px;
-  font-family: 'meatloaf_outline';
-  color: #777777;
 }
 
-button:hover {
-  font-family: 'meatloaf_sketched';
-  color: #eeeeee;
-}
+/* #endregion */
+/* #region positioning properties */
 
-#submit {
+.dash, 
+#password, 
+#post,
+#username {
   display: block;
-  font-size: 80px;
-  font-family: 'meatloaf_sketched';
 }
 
-.flash {
-  margin-top: 10px;
-  font-size: 60px;
-  color: #ff0066;
+form,
+#main-header,
+#sub-header {
+  margin: 0;
 }
 
-a {
-  cursor: pointer;
-  font-size: 60px ;
-  text-decoration: none;
-  color: #eeeeee;
-}
-
-a:hover {
-  color: #777777;
-}
-
-.log-out {
-  float: right;
-}
-
-.questions {
+.answers,
+.questions,
+#main-header {
   display: inline;
 }
 
-.question {
-  font-size: 60px;
+input[type=text],
+input[type=password] {
+  width: 100%;
+}
+
+button {
+  padding: 1px;
 }
 
 input[type="radio"] {
-  margin-top: -3px;
+  margin-top: -1px;
   vertical-align: middle;
 }
 
-input[type="radio"]:checked+label {
-  color: #00ff88;
+ol[type=A] {
+  padding-left: 0;
 }
 
-label {
-  cursor: pointer;
-  color: #777777;
-}
-
-label:hover {
-  color: #eeeeee;
-}
-
-.answers {
-  display: inline;
-}
-
-.answer {
-  font-size: 40px;
-}
-
-.amber {
-  color: #ffbb00;
-}
-
-.correct {
-  font-size: 40px;
-}
-
-.delete:hover {
-  color: #ff0066;
+ol[type=A] > div > div {
+  position: relative;
+  right: 24px;
 }
 
 .dash {
-  display: block;
-  font-size: 50px;
   line-height: 10px;
 }
+
+#log-out {
+  float: right;
+}
+
+#flash {
+  margin-top: 10px;
+}
+
+/* #endregion */
