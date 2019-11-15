@@ -118,6 +118,62 @@ describe('Edit-id View', () => {
   })
 
   context('Functionality', () => {
+    it(`should add a question`, () => {
+      const addButtons = $$('button.add')
+      addButtons[2].click()
+      const questions = $$('input.question')
 
+      assert.strictEqual(3, questions.length)
+
+      const deleteButtons = $$('button.delete')
+      deleteButtons[2].click()
+    })
+
+    it(`should add an answer`, () => {
+      const addButtons = $$('button.add')
+      addButtons[0].click()
+      const answers = $$('input.answer')
+
+      assert.strictEqual(5, answers.length)
+
+      const deleteButtons = $$('button.delete')
+      deleteButtons[0].click()
+    })
+
+    it(`should delete a question`, () => {
+      const addButtons = $$('button.add')
+      addButtons[2].click()
+      const deleteButtons = $$('button.delete')
+      deleteButtons[2].click()
+      const questions = $$('input.question')
+
+      assert.strictEqual(2, questions.length)
+    })
+
+    it(`should delete an answer`, () => {
+      const addButtons = $$('button.add')
+      addButtons[0].click()
+      const deleteButtons = $('button.delete')
+      deleteButtons.click()
+      const answers = $$('input.answer')
+
+      assert.strictEqual(4, answers.length)
+    })
+
+    it(`shouldn't allow there to be less than one question`, () => {
+      const deleteButtons = $$('button.delete')
+      deleteButtons[2].click()
+      const questions = $$('input.question')
+
+      assert.strictEqual(1, questions.length)
+    })
+
+    it(`shouldn't allow there to be less than two answers`, () => {
+      const deleteButtons = $$('button.delete')
+      deleteButtons[0].click()
+      const answers = $$('input.answer')
+
+      assert.strictEqual(2, answers.length)
+    })
   })
 })

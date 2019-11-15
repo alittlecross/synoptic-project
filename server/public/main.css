@@ -164,13 +164,17 @@ input[type="radio"] {
   vertical-align: middle;
 }
 
-ol[type=A] {
+ol[type="1"] {
+  padding-left: 50px;
+}
+
+ol[type="A"] {
   padding-left: 0;
 }
 
-ol[type=A] > div > div {
+ol[type="A"] > div > div {
   position: relative;
-  right: 24px;
+  right: 22px;
 }
 
 .dash {
