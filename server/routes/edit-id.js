@@ -7,7 +7,7 @@ module.exports = {
 
     req.session.edit = quiz
 
-    res.render('edit.ejs', {
+    res.render('edit-id.ejs', {
       quiz: quiz
     })
   },

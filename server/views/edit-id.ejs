@@ -1,4 +1,4 @@
-<%- include('_head', { title: 'Quiz - Edit' }) %>
+<%- include('_head', { title: 'Edit Quiz' }) %>
 
 <%- include('_nav', { page: 'edit' }) %>
 
@@ -22,13 +22,13 @@
         <button class="delete" type="button" data-container="oldQuestion-<%= question.id %>-oldAnswer-<%= answer.id %>" onclick="deleteAnswer(this)">Delete this answer</button>
       </div>
       <% }) %>
-      <button type="button" onclick="addAnswer(this)">Add another answer</button>
+      <button class="add" type="button" onclick="addAnswer(this)">Add another answer</button>
       </ol>
       <span class="dash">- - - - - - - - - - - - - - -</span>
       <button class="delete" type="button" data-container="oldQuestion-<%= question.id %>" onclick="deleteQuestion(this)">Delete this question</button>
     </div>
     <% }) %>
-    <button type="button" onclick="addQuestion(this)">Add another question</button>
+    <button class="add" type="button" onclick="addQuestion(this)">Add another question</button>
     </ol>
   </div>
   <input id="quizId" type="text" name="quizId" value="<%= quiz.id %>" hidden>

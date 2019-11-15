@@ -25,6 +25,7 @@
     "@wdio/mocha-framework": "^5.16.5",
     "@wdio/selenium-standalone-service": "^5.16.5",
     "@wdio/spec-reporter": "^5.16.5",
+    "@wdio/sync": "^5.16.5",
     "chai": "^4.2.0",
     "mocha": "^6.2.2",
     "nyc": "^14.1.1",

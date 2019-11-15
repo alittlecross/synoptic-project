@@ -1,4 +1,4 @@
-<%- include('_head', { title: 'Quiz - Add' }) %>
+<%- include('_head', { title: 'Add Quiz' }) %>
 
 <%- include('_nav', { page: 'add' }) %>
 
@@ -30,12 +30,12 @@
             <button class="delete" type="button" data-container="newQuestion-1-newAnswer-2" onclick="deleteContainer(this)">Delete this answer</button>
           </div>
 
-          <button type="button" onclick="addAnswer(this)">Add another answer</button>
+          <button class="add" type="button" onclick="addAnswer(this)">Add another answer</button>
         </ol>
         <span class="dash">- - - - - - - - - - - - - - -</span>
         <button class="delete" type="button" data-container="newQuestion-1" onclick="deleteContainer(this)">Delete this question</button>
       </div>
-      <button type="button" onclick="addQuestion(this)">Add another question</button>
+      <button class="add" type="button" onclick="addQuestion(this)">Add another question</button>
     </ol>
   </div>
   <button id="post" type="submit">Submit</button>
