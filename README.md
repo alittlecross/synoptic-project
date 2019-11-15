@@ -16,7 +16,7 @@ SESSIONSECRET=[advised]
 
 In the location of your choice, in Terminal:
 
-`mkdir [your folder name] && cd [your folder name]`
+`git clone git@github.com:alittlecross/synoptic-project.git`
 
 Assuming you have Node.js and NPM installed, in that location, in Terminal:
 
@@ -46,7 +46,7 @@ The database will be created without data. To populate some seed data, in Termin
 
 ## Usage
 
-SEE 'user-guide.mp4' IN THE DOCUMENTS FOLDER
+See '4.user-guide.mp4' in the documentation folder.
 
 ## Running Unit Tests
 
@@ -67,7 +67,7 @@ You must have the Java Development Kit installed. Visit [Oracle](https://www.ora
 
 </details>
 
-**Note** there must be an instance of the application running on another Terminal window.
+**Note** there must be an instance of the application running in another Terminal window.
 
 In Terminal:
 
