@@ -72,3 +72,11 @@ You must have the Java Development Kit installed. Visit [Oracle](https://www.ora
 In Terminal:
 
 `npm run wdio`
+
+## Branding, Logo, and Colors
+
+So as to make it easy to change, the brand name on each page is only writen in one location, in the _branding.ejs file in the /server/views folder.
+
+The logo is saved in the /server/public folder.
+
+CSS properties relating to style have been grouped together at the top of the main.css file in the /server/public folder.

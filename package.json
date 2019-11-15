@@ -1,5 +1,5 @@
 {
-  "name": "bluebook",
+  "name": "quiz-manager",
   "version": "1.0.0",
   "description": "a quiz manager application",
   "main": "app.js",
