@@ -1,6 +1,6 @@
 exports.config = {
 
-  baseUrl: `http://localhost:${process.env.APORT}`,
+  baseUrl: `http://localhost:${process.env.APORT || 3000}`,
 
   capabilities: [ { browserName: 'chrome' } ],
 
