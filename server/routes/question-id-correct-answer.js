@@ -9,6 +9,6 @@ module.exports = (req, res) => {
       res.json({ 'warning': 'this route does not relate to the currently cached quiz' })
     }
   } else {
-    res.redirect('/')
+    res.redirect('/list')
   }
 }
