@@ -1,20 +1,28 @@
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-
 <script>
   deleteContainer = button => {
-    const container = $(`#${button.getAttribute('data-container')}`)
+    const container = $(`#${$(button).attr('data-container')}`)
     const ol = container.parent()
 
     container.remove()
 
-    const groupClassName = ol.parent()[0].className
-    const containerCount = $(`div.${groupClassName} > ol > div.${container[0].className}`).length
-    const addButton = ol.children().last()[0]
+    const containers = $(`div#${ol.parent().attr('id')} > ol > div.${container.attr('class')}`)
+    const count = containers.length
+    const addButton = ol.children().last()
 
-    if (groupClassName === 'questions' && containerCount === 1) {
-      addAnswer(addButton)
-    } else if (!containerCount) {
-      addQuestion(addButton)
+    addButton.detach()
+
+    const groupClassName = ol.parent().attr('class')
+
+    if (count) {
+      containers[count - 1].after(addButton[0])
+    } else {
+      ol.append(addButton[0])
+    }
+
+    if (groupClassName === 'questions' && count === 1) {
+      addAnswer(addButton[0])
+    } else if (!count) {
+      addQuestion(addButton[0])
     }
   }
 </script> 

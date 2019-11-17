@@ -1,13 +1,13 @@
 <script>
   addAnswer = button => {
-    const container = button.parentNode.parentNode
+    const container = $(button).parent().parent()
     
-    const question = container.getAttribute('id')
-    const number = parseInt(container.getAttribute('data-answer-number')) + 1
+    const question = container.attr('id')
+    const number = parseInt(container.attr('data-answer-number')) + 1
 
-    container.setAttribute('data-answer-number', number)
+    container.attr('data-answer-number', number)
 
-    button.insertAdjacentHTML('beforebegin', `
+    $(button).before(`
       <div id="${question}-newAnswer-${number}" class="answers">
         <li class="answer"><input class="answer" type="text" name="${question}-newAnswer-${number}" placeholder="Answer" required></li>
         <div class="correct">
@@ -20,12 +20,12 @@
   }
 
   addQuestion = button => {
-    const container = button.parentNode.parentNode
-    const number = parseInt(container.getAttribute('data-question-number')) + 1
+    const container = $(button).parent().parent()
+    const number = parseInt(container.attr('data-question-number')) + 1
 
-    container.setAttribute('data-question-number', number)
+    container.attr('data-question-number', number)
 
-    button.insertAdjacentHTML('beforebegin', `
+    $(button).before(`
       <div id="newQuestion-${number}" class="questions" data-answer-number="2" >
         <li class="question"><input class="question" type="text" name="newQuestion-${number}" placeholder="Question" required></li>
         <ol type="A">

@@ -1,4 +1,4 @@
-<%- include('_head', { title: 'Quiz - ' + quiz.name }) %>
+<%- include('_head', { title: 'Quiz - ' + quiz.name, jquery: true }) %>
 
 <%- include('_nav', { page: 'quiz' }) %>
 
@@ -21,8 +21,6 @@
 </ol>
 
 <% if (permission !== 'restricted') { %>
-  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-  
   <script>
     toggleClass = (button, questionId) => {
       const state = button.firstElementChild

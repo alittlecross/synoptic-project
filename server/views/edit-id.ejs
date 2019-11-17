@@ -1,4 +1,4 @@
-<%- include('_head', { title: 'Edit Quiz' }) %>
+<%- include('_head', { title: 'Edit Quiz', jquery: true }) %>
 
 <%- include('_nav', { page: 'edit' }) %>
 
@@ -45,42 +45,42 @@
 
 <script>
   deleteQuestion = button => {
-    const container = button.getAttribute('data-container')
+    const container = $(button).attr('data-container')
     const id = container.split('-')[1]
-    const deleteQuestions = document.getElementById('deleteQuestions')
+    const deleteQuestions = $('#deleteQuestions')
     
     deleteContainer(button)
 
-    let value = deleteQuestions.getAttribute('value')
+    let value = deleteQuestions.attr('value')
 
     value = value ? value.split() : [] 
     value.push(id)
     
-    deleteQuestions.setAttribute('value', value.join())
+    deleteQuestions.attr('value', value.join())
   }
 
   deleteAnswer = button => {
-    const container = button.getAttribute('data-container')
+    const container = $(button).attr('data-container')
     const id = container.split('-')[3]
-    const deleteAnswers = document.getElementById('deleteAnswers')
+    const deleteAnswers = $('#deleteAnswers')
     
     deleteContainer(button)
 
-    let value = deleteAnswers.getAttribute('value')
+    let value = deleteAnswers.attr('value')
 
     value = value ? value.split() : [] 
     value.push(id)
     
-    deleteAnswers.setAttribute('value', value.join())
+    deleteAnswers.attr('value', value.join())
   }
 
   deleteAll = _ => {
-    const deleteQuiz = document.getElementById('deleteQuiz')
-    const quizId = document.getElementById('quizId').getAttribute('value')
+    const deleteQuiz = $('#deleteQuiz')
+    const quizId = $('#quizId').attr('value')
     
-    deleteQuiz.setAttribute('value', quizId)
+    deleteQuiz.attr('value', quizId)
     
-    document.getElementById('quiz').remove()    
-    document.getElementById('edit-form').submit()
+    $('#quiz').remove()    
+    $('#edit-form').submit()
   }
 </script>
