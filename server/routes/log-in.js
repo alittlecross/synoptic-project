@@ -1,15 +1,20 @@
 const LogIn = require('../lib/log-in')
 
-module.exports = async (req, res) => {
-  const logIn = await LogIn.authenticate(req.body)
-
-  if (logIn.success) {
-    req.session.user = logIn.user
-
+module.exports = {
+  get: (req, res) => {
     res.redirect('/list')
-  } else {
-    req.session.flash = { message: 'Username or password incorrect' }
+  },
+  post: async (req, res) => {
+    const logIn = await LogIn.authenticate(req.body)
 
-    res.redirect('/')
+    if (logIn.success) {
+      req.session.user = logIn.user
+
+      res.redirect('/list')
+    } else {
+      req.session.flash = { message: 'Username or password incorrect' }
+
+      res.redirect('/')
+    }
   }
 }

@@ -12,10 +12,9 @@ describe('List View', () => {
 
     it('should have the right main header', () => {
       const mainHeader = $$('h1#main-header')
-      const getText = mainHeader[0].getText()
 
       assert.strictEqual(1, mainHeader.length)
-      assert.strictEqual('Blue Book', getText)
+      assert.strictEqual('Blue Book', mainHeader[0].getText())
     })
 
     it('should have the a logo', () => {
@@ -26,10 +25,9 @@ describe('List View', () => {
 
     it(`should have a 'Log Out' link`, () => {
       const link = $$('a[href="/log-out"]')
-      const getText = link[0].getText()
 
       assert.strictEqual(1, link.length)
-      assert.strictEqual('Log Out', getText)
+      assert.strictEqual('Log Out', link[0].getText())
     })
 
     it('should have quiz links', () => {
@@ -65,8 +63,8 @@ describe('List View', () => {
   context('Functionality', () => {
     it(`the 'Log Out' link should return to the use to the 'Log In' page`, () => {
       restrictedLogIn()
-      const link = $('a[href="/log-out"]')
-      link.click()
+      const link = $$('a[href="/log-out"]')
+      link[0].click()
       const url = browser.getUrl()
 
       assert.strictEqual('http://localhost:3000/', url)
@@ -74,8 +72,8 @@ describe('List View', () => {
 
     it('the quiz links should navigate to a quiz', () => {
       restrictedLogIn()
-      const link = $('a[href="/quiz-1"]')
-      link.click()
+      const link = $$('a[href="/quiz-1"]')
+      link[0].click()
       const url = browser.getUrl()
 
       assert.strictEqual('http://localhost:3000/quiz-1', url)
@@ -83,8 +81,8 @@ describe('List View', () => {
 
     it(`the 'Add' link should navigate to the 'Add' page`, () => {
       editLogIn()
-      const link = $('a[href="/add"]')
-      link.click()
+      const link = $$('a[href="/add"]')
+      link[0].click()
       const url = browser.getUrl()
 
       assert.strictEqual('http://localhost:3000/add', url)

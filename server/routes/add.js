@@ -5,7 +5,7 @@ module.exports = {
     if (req.session.user && req.session.user.permission === 'edit') {
       res.render('add.ejs')
     } else {
-      res.redirect('/')
+      res.redirect('/list')
     }
   },
   post: async (req, res) => {
@@ -14,7 +14,7 @@ module.exports = {
 
       res.redirect('/list')
     } else {
-      res.redirect('/')
+      res.redirect('/list')
     }
   }
 }

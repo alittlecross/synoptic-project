@@ -11,10 +11,9 @@ describe('Index View', () => {
 
     it('should have the right main header', () => {
       const mainHeader = $$('h1#main-header')
-      const getText = mainHeader[0].getText()
 
       assert.strictEqual(1, mainHeader.length)
-      assert.strictEqual('Blue Book', getText)
+      assert.strictEqual('Blue Book', mainHeader[0].getText())
     })
 
     it('should have the a logo', () => {
@@ -37,10 +36,9 @@ describe('Index View', () => {
 
     it('should have a submit button', () => {
       const submit = $$('button[type="submit"]')
-      const getText = submit[0].getText()
 
       assert.strictEqual(1, submit.length)
-      assert.strictEqual('Submit', getText)
+      assert.strictEqual('Submit', submit[0].getText())
     })
   })
 
@@ -53,9 +51,8 @@ describe('Index View', () => {
       const submit = $('button[type="submit"]')
       submit.click()
       const flash = $('div#flash')
-      const getText = flash.getText()
 
-      assert.strictEqual('Username or password incorrect', getText)
+      assert.strictEqual('Username or password incorrect', flash.getText())
     })
 
     it('should display a message if the password is incorrect', () => {
@@ -66,9 +63,8 @@ describe('Index View', () => {
       const submit = $('button[type="submit"]')
       submit.click()
       const flash = $('div#flash')
-      const getText = flash.getText()
 
-      assert.strictEqual('Username or password incorrect', getText)
+      assert.strictEqual('Username or password incorrect', flash.getText())
     })
 
     it('should log in if the username and password are correct', () => {

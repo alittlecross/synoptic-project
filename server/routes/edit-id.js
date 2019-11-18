@@ -12,7 +12,7 @@ module.exports = {
         quiz: quiz
       })
     } else {
-      res.redirect('/')
+      res.redirect('/list')
     }
   },
   post: async (req, res) => {
@@ -26,7 +26,7 @@ module.exports = {
         res.redirect(`/quiz-${quiz.id}`)
       }
     } else {
-      res.redirect('/')
+      res.redirect('/list')
     }
   }
 }

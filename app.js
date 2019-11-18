@@ -17,7 +17,9 @@ app.use(flash)
 
 app.get('/', require('./server/routes/index'))
 
-app.post('/log-in', require('./server/routes/log-in'))
+app.get('/log-in', require('./server/routes/log-in').get)
+
+app.post('/log-in', require('./server/routes/log-in').post)
 
 app.get('/list', require('./server/routes/list'))
 

@@ -48,9 +48,9 @@ module.exports.editQuiz = _ => {
 
 module.exports.editEditId = _ => {
   this.editLogIn()
-  const quiz = $('a[href="/quiz-1"]')
+  const quiz = $('a=English')
   quiz.click()
-  const edit = $('a[href="/edit-1"]')
+  const edit = $('a[href^="/edit"]')
   edit.click()
 }
 
