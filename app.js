@@ -1,40 +1,49 @@
-const express = require('express')
-const app = express()
+import express from "express";
+import session from "express-session";
+import add from "./server/routes/add.js";
+import editId from "./server/routes/edit-id.js";
+import flash from "./server/plug-ins/flash.js";
+import index from "./server/routes/index.js";
+import list from "./server/routes/list.js";
+import logIn from "./server/routes/log-in.js";
+import logOut from "./server/routes/log-out.js";
+import questionIdCorrectAnswer from "./server/routes/question-id-correct-answer.js";
+import quizId from "./server/routes/quiz-id.js";
+import sessionOptions from "./server/plug-ins/session.js";
 
-const port = process.env.APORT || 3000
+const app = express();
 
-app.set('views', './server/views')
-app.use(express.static('./server/public'))
+const port = process.env.APORT || 3000;
 
-const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({ extended: true }))
+app.set("views", "./server/views");
+app.use(express.static("./server/public"));
 
-const session = require('express-session')
-app.use(session(require('./server/plug-ins/session')))
+app.use(express.urlencoded({ extended: true }));
 
-const flash = require('./server/plug-ins/flash')
-app.use(flash)
+app.use(session(sessionOptions));
 
-app.get('/', require('./server/routes/index'))
+app.use(flash);
 
-app.get('/log-in', require('./server/routes/log-in').get)
+app.get("/", index);
 
-app.post('/log-in', require('./server/routes/log-in').post)
+app.get("/log-in", logIn.get);
 
-app.get('/list', require('./server/routes/list'))
+app.post("/log-in", logIn.post);
 
-app.get('/log-out', require('./server/routes/log-out'))
+app.get("/list", list);
 
-app.get('/quiz-:id', require('./server/routes/quiz-id'))
+app.get("/log-out", logOut);
 
-app.get('/question-:id-correct-answer', require('./server/routes/question-id-correct-answer'))
+app.get("/quiz-:id", quizId);
 
-app.get('/add', require('./server/routes/add').get)
+app.get("/question-:id-correct-answer", questionIdCorrectAnswer);
 
-app.post('/add', require('./server/routes/add').post)
+app.get("/add", add.get);
 
-app.get('/edit-:id', require('./server/routes/edit-id').get)
+app.post("/add", add.post);
 
-app.post('/edit-:id', require('./server/routes/edit-id').post)
+app.get("/edit-:id", editId.get);
 
-app.listen(port)
+app.post("/edit-:id", editId.post);
+
+app.listen(port);

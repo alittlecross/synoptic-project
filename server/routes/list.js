@@ -1,17 +1,17 @@
-const Quiz = require('../lib/quiz')
+import Quiz from "../lib/quiz.js";
 
-module.exports = async (req, res) => {
+export default async (req, res) => {
   if (req.session.user) {
-    delete req.session.quiz
+    delete req.session.quiz;
 
-    const permission = req.session.user.permission
-    const quizes = await Quiz.list()
+    const { permission } = req.session.user;
+    const quizes = await Quiz.list();
 
-    res.render('list.ejs', {
-      permission: permission,
-      quizes: quizes
-    })
+    res.render("list.ejs", {
+      permission,
+      quizes,
+    });
   } else {
-    res.redirect('/')
+    res.redirect("/");
   }
-}
+};

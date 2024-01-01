@@ -1,22 +1,22 @@
-const DatabaseConnection = require('../../db/database-connection')
+import DatabaseConnection from "../../db/database-connection.js";
 
 class DatabaseAnswers {
-  static async addMany (string) {
+  static async addMany(string) {
     return DatabaseConnection.query(`
       INSERT INTO answers (answer, correct, questionid)
       VALUES (${string});
-    `)
+    `);
   }
 
-  static async deleteMany (string) {
+  static async deleteMany(string) {
     return DatabaseConnection.query(`
       DELETE FROM answers
 
       WHERE id IN (${string});
-    `)
+    `);
   }
 
-  static async updateMany (string) {
+  static async updateMany(string) {
     return DatabaseConnection.query(`
       INSERT INTO answers (id, answer, correct, questionid)
       VALUES (${string})
@@ -24,8 +24,8 @@ class DatabaseAnswers {
         SET 
           answer = EXCLUDED.answer,
           correct = EXCLUDED.correct;
-    `)
+    `);
   }
 }
 
-module.exports = DatabaseAnswers
+export default DatabaseAnswers;

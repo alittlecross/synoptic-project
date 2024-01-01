@@ -2,52 +2,38 @@
   "name": "quiz-manager",
   "version": "1.0.0",
   "description": "a quiz manager application",
+  "license": "ISC",
+  "author": "alittlecross",
+  "type": "module",
   "main": "app.js",
   "scripts": {
     "migrations": "node db/run.js migrations",
     "seeds": "node db/run.js seeds",
-    "test": "nyc --reporter=text mocha",
-    "wdio": "./node_modules/.bin/wdio test/wdio/config.js"
+    "test": "mocha",
+    "wdio": "wdio run test/wdio/config.js"
   },
-  "author": "alittlecross",
-  "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.6",
-    "body-parser": "^1.19.0",
-    "ejs": "^2.7.1",
-    "express": "^4.17.1",
-    "express-session": "^1.17.0",
-    "pg": "^7.12.1"
+    "bcrypt": "5.1.1",
+    "ejs": "3.1.9",
+    "express": "4.18.2",
+    "express-session": "1.17.3",
+    "pg": "8.11.3"
   },
   "devDependencies": {
-    "@wdio/cli": "^5.16.6",
-    "@wdio/local-runner": "^5.16.6",
-    "@wdio/mocha-framework": "^5.16.5",
-    "@wdio/selenium-standalone-service": "^5.16.5",
-    "@wdio/spec-reporter": "^5.16.5",
-    "@wdio/sync": "^5.16.5",
-    "chai": "^4.2.0",
-    "mocha": "^6.2.2",
-    "nyc": "^14.1.1",
-    "sinon": "^7.5.0"
+    "@wdio/browser-runner": "8.27.0",
+    "@wdio/cli": "8.27.1",
+    "@wdio/mocha-framework": "8.27.0",
+    "@wdio/spec-reporter": "8.27.0",
+    "chai": "5.0.0",
+    "mocha": "10.2.0",
+    "sinon": "17.0.1",
+    "wdio-selenium-standalone-service": "0.0.12"
   },
-  "standard": {
-    "globals": [
-      "describe",
-      "beforeEach",
-      "afterEach",
-      "it",
-      "context",
-      "browser",
-      "$",
-      "$$"
-    ]
-  },
-  "nyc": {
-    "exclude": [
-      "db/*",
-      "server/services/*",
-      "test/*"
-    ]
+  "eslintConfig": {
+    "globals": {
+      "$": true,
+      "$$": true,
+      "browser": true
+    }
   }
 }

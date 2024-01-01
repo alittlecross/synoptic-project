@@ -1,5 +1,5 @@
-module.exports = {
+export default {
   resave: false,
   saveUninitialized: true,
-  secret: process.env.SESSIONSECRET || 'no-secret'
-}
+  secret: process.env.SESSIONSECRET || "no-secret",
+};

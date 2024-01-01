@@ -1,20 +1,20 @@
-const LogIn = require('../lib/log-in')
+import LogIn from "../lib/log-in.js";
 
-module.exports = {
+export default {
   get: (req, res) => {
-    res.redirect('/list')
+    res.redirect("/list");
   },
   post: async (req, res) => {
-    const logIn = await LogIn.authenticate(req.body)
+    const logIn = await LogIn.authenticate(req.body);
 
     if (logIn.success) {
-      req.session.user = logIn.user
+      req.session.user = logIn.user;
 
-      res.redirect('/list')
+      res.redirect("/list");
     } else {
-      req.session.flash = { message: 'Username or password incorrect' }
+      req.session.flash = { message: "Username or password incorrect" };
 
-      res.redirect('/')
+      res.redirect("/");
     }
-  }
-}
+  },
+};

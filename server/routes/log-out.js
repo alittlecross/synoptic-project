@@ -1,3 +1,3 @@
-module.exports = (req, res) => {
-  res.redirect('/')
-}
+export default (req, res) => {
+  res.redirect("/");
+};

@@ -1,7 +1,7 @@
-module.exports = (req, res) => {
-  req.session.destroy()
+export default (req, res) => {
+  req.session.destroy();
 
-  res.render('index.ejs', {
-    flash: res.locals.flash
-  })
-}
+  res.render("index.ejs", {
+    flash: res.locals.flash,
+  });
+};

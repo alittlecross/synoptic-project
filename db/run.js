@@ -1,3 +1,3 @@
-const Scripts = require('./database-scripts')
+import Scripts from "./database-scripts.js";
 
-Scripts.run(process.argv[2])
+Scripts.run(process.argv[2]);

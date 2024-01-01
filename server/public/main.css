@@ -11,8 +11,8 @@
 
 a,
 body,
-input[type=text],
-input[type=password],
+input[type="text"],
+input[type="password"],
 button:hover,
 label:hover {
   color: #eeeeee;
@@ -24,8 +24,8 @@ a:hover {
   color: #777777;
 }
 
-input[type=text],
-input[type=password] {
+input[type="text"],
+input[type="password"] {
   outline-color: #eeeeee;
 }
 
@@ -38,7 +38,7 @@ body {
   background-color: #333333;
 }
 
-input[type=radio]:checked + label {
+input[type="radio"]:checked + label {
   color: #00ff88;
 }
 
@@ -50,21 +50,21 @@ input[type=radio]:checked + label {
 /* #region font properties */
 
 @font-face {
-  font-family: 'meatloaf_sketched';
-  src: url('fonts/meatloaf_sketched.ttf') format('truetype');
+  font-family: "meatloaf_sketched";
+  src: url("fonts/meatloaf_sketched.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'meatloaf_outline';
-  src: url('fonts/meatloaf_outline.ttf') format('truetype');
+  font-family: "meatloaf_outline";
+  src: url("fonts/meatloaf_outline.ttf") format("truetype");
 }
 
 body,
-input[type=text],
-input[type=password],
+input[type="text"],
+input[type="password"],
 button:hover,
 #post {
-  font-family: 'meatloaf_sketched';
+  font-family: "meatloaf_sketched";
 }
 
 a,
@@ -83,7 +83,7 @@ button,
 }
 
 button {
-  font-family: 'meatloaf_outline';
+  font-family: "meatloaf_outline";
 }
 
 #main-header {
@@ -110,8 +110,8 @@ label {
 }
 
 button,
-input[type=text],
-input[type=password] {
+input[type="text"],
+input[type="password"] {
   border: none;
   background: none;
 }
@@ -131,8 +131,8 @@ button {
 /* #endregion */
 /* #region positioning properties */
 
-.dash, 
-#password, 
+.dash,
+#password,
 #post,
 #username {
   display: block;
@@ -150,8 +150,8 @@ form,
   display: inline;
 }
 
-input[type=text],
-input[type=password] {
+input[type="text"],
+input[type="password"] {
   width: 100%;
 }
 

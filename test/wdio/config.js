@@ -1,28 +1,29 @@
-exports.config = {
+/* eslint-disable import/prefer-default-export */
 
+export const config = {
   baseUrl: `http://localhost:${process.env.APORT || 3000}`,
 
-  capabilities: [ { browserName: 'chrome' } ],
+  capabilities: [{ browserName: "chrome" }],
 
   debug: true,
 
-  framework: 'mocha',
+  framework: "mocha",
 
-  logLevel: 'error',
+  logLevel: "error",
 
   maxInstances: 1,
 
   mochaOpts: { timeout: 300000 },
 
-  reporters: [ 'spec' ],
+  reporters: ["spec"],
 
-  seleniumLogs: './.selenium_output',
+  seleniumLogs: "./.selenium_output",
 
-  services: ['selenium-standalone'],
+  services: ["selenium-standalone"],
 
-  specs: [ './test/wdio/features/*.js' ],
+  specs: ["./features/*.js"],
 
-  before: (capabilities, specs) => {
-    browser.setWindowSize(1600, 1000)
-  }
-}
+  before: async () => {
+    await browser.setWindowSize(1600, 1000);
+  },
+};

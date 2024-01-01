@@ -2,13 +2,13 @@
 
 ## Environmental Variables
 
-APORT=[will default to 3000 if not set differently]  
+APORT=[will default to 3000 if not set differently]
 
 DBCDATABASE=[quiz_manager or db name of your choice]  
 DBCHOST=[will default to 127.0.0.1 if not set differently]  
 DBCPASSWORD=[optional]  
 DBCPORT=[will default to 5432 if not set differently]  
-DBCUSER=[optional]  
+DBCUSER=[optional]
 
 SESSIONSECRET=[advised]
 
@@ -32,11 +32,11 @@ Once Postgres is running, in Terminal:
 
 `CREATE DATABASE [quiz_manager or db name of your choice];`
 
-To close Postgress, in Terminal:
+To close Postgres, in Terminal:
 
 `\q`
 
-To create the scructure of the database, in Terminal:
+To create the structure of the database, in Terminal:
 
 `npm run migrations`
 
@@ -75,7 +75,7 @@ In Terminal:
 
 ## Branding, Logo, and Colors
 
-So as to make it easy to change, the brand name on each page is only writen in one location, in the _branding.ejs file in the /server/views folder.
+So as to make it easy to change, the brand name on each page is only written in one location, in the \_branding.ejs file in the /server/views folder.
 
 The logo is saved in the /server/public folder.
 

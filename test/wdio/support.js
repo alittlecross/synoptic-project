@@ -1,61 +1,61 @@
-module.exports.restrictedLogIn = _ => {
-  browser.url('/')
-  const username = $('input[name="username"]')
-  username.setValue('restricted@email.com')
-  const password = $('input[name="password"]')
-  password.setValue('password')
-  const submit = $('button[type="submit"]')
-  submit.click()
-}
+export const restrictedLogIn = async () => {
+  await browser.url("/");
+  const username = await $('input[name="username"]');
+  await username.setValue("restricted@email.com");
+  const password = await $('input[name="password"]');
+  await password.setValue("password");
+  const submit = await $('button[type="submit"]');
+  await submit.click();
+};
 
-module.exports.viewLogIn = _ => {
-  browser.url('/')
-  const username = $('input[name="username"]')
-  username.setValue('view@email.com')
-  const password = $('input[name="password"]')
-  password.setValue('password')
-  const submit = $('button[type="submit"]')
-  submit.click()
-}
+export const viewLogIn = async () => {
+  await browser.url("/");
+  const username = await $('input[name="username"]');
+  await username.setValue("view@email.com");
+  const password = await $('input[name="password"]');
+  await password.setValue("password");
+  const submit = await $('button[type="submit"]');
+  await submit.click();
+};
 
-module.exports.editLogIn = _ => {
-  browser.url('/')
-  const username = $('input[name="username"]')
-  username.setValue('edit@email.com')
-  const password = $('input[name="password"]')
-  password.setValue('password')
-  const submit = $('button[type="submit"]')
-  submit.click()
-}
+export const editLogIn = async () => {
+  await browser.url("/");
+  const username = await $('input[name="username"]');
+  await username.setValue("edit@email.com");
+  const password = await $('input[name="password"]');
+  await password.setValue("password");
+  const submit = await $('button[type="submit"]');
+  await submit.click();
+};
 
-module.exports.restrictedQuiz = _ => {
-  this.restrictedLogIn()
-  const link = $('a[href="/quiz-1"]')
-  link.click()
-}
+export const restrictedQuiz = async () => {
+  await restrictedLogIn();
+  const link = await $('a[href="/quiz-1"]');
+  await link.click();
+};
 
-module.exports.viewQuiz = _ => {
-  this.viewLogIn()
-  const link = $('a[href="/quiz-1"]')
-  link.click()
-}
+export const viewQuiz = async () => {
+  await viewLogIn();
+  const link = await $('a[href="/quiz-1"]');
+  await link.click();
+};
 
-module.exports.editQuiz = _ => {
-  this.editLogIn()
-  const link = $('a[href="/quiz-1"]')
-  link.click()
-}
+export const editQuiz = async () => {
+  await editLogIn();
+  const link = await $('a[href="/quiz-1"]');
+  await link.click();
+};
 
-module.exports.editEditId = _ => {
-  this.editLogIn()
-  const quiz = $('a=English')
-  quiz.click()
-  const edit = $('a[href^="/edit"]')
-  edit.click()
-}
+export const editEditId = async () => {
+  await editLogIn();
+  const quiz = await $("a=English");
+  await quiz.click();
+  const edit = await $('a[href^="/edit"]');
+  await edit.click();
+};
 
-module.exports.editAdd = _ => {
-  this.editLogIn()
-  const quiz = $('a[href="/add"]')
-  quiz.click()
-}
+export const editAdd = async () => {
+  await editLogIn();
+  const quiz = await $('a[href="/add"]');
+  await quiz.click();
+};

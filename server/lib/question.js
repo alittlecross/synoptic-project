@@ -1,9 +1,9 @@
 class Question {
-  constructor (data) {
-    this.id = data.questionid
-    this.question = data.question
-    this.answers = []
+  constructor(data) {
+    this.id = data.questionid;
+    this.question = data.question;
+    this.answers = [];
   }
 }
 
-module.exports = Question
+export default Question;

@@ -1,99 +1,117 @@
-const DatabaseQuizes = require('../services/quizes')
-const DatabaseQuestions = require('../services/questions')
-const DatabaseAnswers = require('../services/answers')
+import DatabaseQuizes from "../services/quizes.js";
+import DatabaseQuestions from "../services/questions.js";
+import DatabaseAnswers from "../services/answers.js";
 
-const Add = require('./add')
+import Add from "./add.js";
 
 class Edit {
-  static async quiz (body, quiz) {
-    const deleteQuiz = body['deleteQuiz']
-    const quizId = quiz.id
+  static async quiz(body, quiz) {
+    const { deleteQuiz } = body;
+    const quizId = quiz.id;
 
     if (deleteQuiz) {
-      await DatabaseQuizes.deleteOne(deleteQuiz)
-      return true
-    } else {
-      const bodyName = body['oldQuizName']
-      const quizName = quiz.name
-
-      if (bodyName !== quizName) {
-        await DatabaseQuizes.updateOne(bodyName, quizId)
-      }
-
-      await Edit.questions(body, quiz)
-      return false
+      await DatabaseQuizes.deleteOne(deleteQuiz);
+      return true;
     }
+    const bodyName = body.oldQuizName;
+    const quizName = quiz.name;
+
+    if (bodyName !== quizName) {
+      await DatabaseQuizes.updateOne(bodyName, quizId);
+    }
+
+    await Edit.questions(body, quiz);
+    return false;
   }
 
-  static async questions (body, quiz) {
-    const deleteQuestions = body['deleteQuestions']
+  static async questions(body, quiz) {
+    const { deleteQuestions } = body;
 
     if (deleteQuestions) {
-      await DatabaseQuestions.deleteMany(deleteQuestions)
+      await DatabaseQuestions.deleteMany(deleteQuestions);
     }
 
-    const allKeys = Object.keys(body)
-    const oldQuestionKeys = allKeys.filter(key => key.match(/oldQuestion/) && key.match(/-/g).length === 1)
-    const oldQuestionIds = oldQuestionKeys.map(key => { return { id: parseInt(key.split('-')[1]) } })
-    const string = []
+    const allKeys = Object.keys(body);
+    const oldQuestionKeys = allKeys.filter(
+      (key) => key.match(/oldQuestion/) && key.match(/-/g).length === 1
+    );
+    const oldQuestionIds = oldQuestionKeys.map((key) => ({
+      id: parseInt(key.split("-")[1], 10),
+    }));
+    const string = [];
 
-    oldQuestionKeys.forEach(key => {
-      const questionId = parseInt(key.split('-')[1])
-      const questionIndex = quiz.questions.findIndex(element => element.id === questionId)
-      const quizQuestion = quiz.questions[questionIndex].question
+    oldQuestionKeys.forEach((key) => {
+      const questionId = parseInt(key.split("-")[1], 10);
+      const questionIndex = quiz.questions.findIndex(
+        (element) => element.id === questionId
+      );
+      const quizQuestion = quiz.questions[questionIndex].question;
 
-      let bodyQuestion = body[key]
+      let bodyQuestion = body[key];
       if (bodyQuestion !== quizQuestion) {
-        bodyQuestion = bodyQuestion.replace(/'/, `''`)
-        string.push(`'${questionId}', '${bodyQuestion}', '0'`)
+        bodyQuestion = bodyQuestion.replace(/'/, `''`);
+        string.push(`'${questionId}', '${bodyQuestion}', '0'`);
       }
-    })
+    });
 
     if (string.length) {
-      await DatabaseQuestions.updateMany(string.join('), ('))
+      await DatabaseQuestions.updateMany(string.join("), ("));
     }
 
-    await Add.questions(body, quiz.id)
+    await Add.questions(body, quiz.id);
 
-    await Add.answers(oldQuestionKeys, allKeys, body, oldQuestionIds)
+    await Add.answers(oldQuestionKeys, allKeys, body, oldQuestionIds);
 
-    await Edit.answers(allKeys, body, quiz)
+    await Edit.answers(allKeys, body, quiz);
   }
 
-  static async answers (allKeys, body, quiz) {
-    const deleteAnswers = body['deleteAnswers']
+  static async answers(allKeys, body, quiz) {
+    const { deleteAnswers } = body;
 
     if (deleteAnswers) {
-      await DatabaseAnswers.deleteMany(deleteAnswers)
+      await DatabaseAnswers.deleteMany(deleteAnswers);
     }
 
-    const string = []
+    const string = [];
 
-    const correctAnswerKeys = allKeys.filter(key => key.match(/oldQuestion/) && key.match(/correct/))
-    const correctAnswerValues = correctAnswerKeys.map(key => body[key])
-    const answerKeys = allKeys.filter(key => key.match(/oldQuestion/) && !key.match(/correct/) && key.match(/oldAnswer/))
+    const correctAnswerKeys = allKeys.filter(
+      (key) => key.match(/oldQuestion/) && key.match(/correct/)
+    );
+    const correctAnswerValues = correctAnswerKeys.map((key) => body[key]);
+    const answerKeys = allKeys.filter(
+      (key) =>
+        key.match(/oldQuestion/) &&
+        !key.match(/correct/) &&
+        key.match(/oldAnswer/)
+    );
 
-    answerKeys.forEach(key => {
-      const questionId = parseInt(key.split('-')[1])
-      const answerId = parseInt(key.split('-')[3])
-      const questionIndex = quiz.questions.findIndex(element => element.id === questionId)
-      const answerIndex = quiz.questions[questionIndex].answers.findIndex(element => element.id === answerId)
-      const quizAnswer = quiz.questions[questionIndex].answers[answerIndex].answer
-      const quizCorrect = quiz.questions[questionIndex].answers[answerIndex].correct
+    answerKeys.forEach((key) => {
+      const questionId = parseInt(key.split("-")[1], 10);
+      const answerId = parseInt(key.split("-")[3], 10);
+      const questionIndex = quiz.questions.findIndex(
+        (element) => element.id === questionId
+      );
+      const answerIndex = quiz.questions[questionIndex].answers.findIndex(
+        (element) => element.id === answerId
+      );
+      const quizAnswer =
+        quiz.questions[questionIndex].answers[answerIndex].answer;
+      const quizCorrect =
+        quiz.questions[questionIndex].answers[answerIndex].correct;
 
-      const bodyCorrect = correctAnswerValues.includes(key)
+      const bodyCorrect = correctAnswerValues.includes(key);
 
-      let bodyAnswer = body[key]
+      let bodyAnswer = body[key];
       if (bodyAnswer !== quizAnswer || bodyCorrect !== quizCorrect) {
-        bodyAnswer = bodyAnswer.replace(/'/, `''`)
-        string.push(`'${answerId}', '${bodyAnswer}', '${bodyCorrect}', '0'`)
+        bodyAnswer = bodyAnswer.replace(/'/, `''`);
+        string.push(`'${answerId}', '${bodyAnswer}', '${bodyCorrect}', '0'`);
       }
-    })
+    });
 
     if (string.length) {
-      await DatabaseAnswers.updateMany(string.join('), ('))
+      await DatabaseAnswers.updateMany(string.join("), ("));
     }
   }
 }
 
-module.exports = Edit
+export default Edit;
